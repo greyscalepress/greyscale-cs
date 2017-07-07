@@ -1,0 +1,24 @@
+body, 
+.menu-open .sidebar-nav-holder, .menu-open .sidebar-nav-holder:before, 
+.menu-open .sidebar-nav-holder:after, div.sharedaddy .sd-content,
+.sidebar-hide-scroll, .mini-cart,
+.main-navigation > div 
+{
+	background-color: #e6e6e6;
+}
+
+body {
+	background-color:  #e6e6e6;
+}
+
+.entry-content a {
+	background-color: white;
+/*	text-decoration: underline;*/
+}
+
+.entry-content a:hover {
+	/*background-color: #888;
+	color: #fff;*/
+	background-color: yellow;
+	color: black;
+}
