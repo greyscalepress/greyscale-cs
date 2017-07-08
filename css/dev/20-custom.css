@@ -11,14 +11,38 @@ body {
 	background-color:  #e6e6e6;
 }
 
-.entry-content a {
+.author-biography a,
+.entry-content p a,
+.entry-content ul a {
 	background-color: white;
 /*	text-decoration: underline;*/
 }
 
-.entry-content a:hover {
+.entry-content p a:hover {
 	/*background-color: #888;
 	color: #fff;*/
 	background-color: yellow;
 	color: black;
+}
+
+.author-img {
+	float: left;
+	margin: 1em 2em 1.5em 0;
+}
+
+/*
+Hide external links on product lists
+*/
+
+.page-template-woocommerce-featured-products-page a.product_type_external,
+.archive a.product_type_external {
+	display: none;
+}
+
+/*
+Fix some weirdness
+*/
+
+.woocommerce-tabs .woocommerce-Tabs-panel--description > h3 {
+	display: block;
 }

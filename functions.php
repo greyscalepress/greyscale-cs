@@ -15,7 +15,7 @@ function custom_register_styles() {
 	 * Custom CSS
 	 */
 	 
-	$dev_mode = false;
+	$dev_mode = true;
 	$host = $_SERVER['HTTP_HOST'];
 	
 	if ( current_user_can('edit_others_pages') ) {
@@ -145,4 +145,44 @@ add_action('admin_head', 'greyscale_admin_css');
 //require_once('functions/members.php');
 //
 //require_once('functions/prev-next.php');
+
+
+
+// WooCommerce Modification
+
+add_action( 'woocommerce_archive_description', 'greyscale_author_metadata', 10 );
+
+function greyscale_author_metadata() {
+		if ( is_product_taxonomy() && 0 === absint( get_query_var( 'paged' ) ) ) {
+		
+		// check for image:
+		
+			$queried_object = get_queried_object();
+			$taxonomy = $queried_object->taxonomy;
+			$term_id = $queried_object->term_id;
+			
+			$image = get_field( 'author_picture', $taxonomy.'_'.$term_id);
+
+//			echo '<pre>';
+//			var_dump($image);
+//			echo '</pre>';
+			
+			if( !empty($image) ): ?>
+			
+				<img src="<?php echo $image['sizes']['medium']; ?>" alt="<?php echo $image['alt']; ?>" class="author-img" />
+			
+			<?php endif;
+			
+			$biography = get_field( 'biography', $taxonomy.'_'.$term_id);
+			
+			if( !empty($biography) ): ?>
+			
+				<div class="author-biography">
+				<?php echo $biography; ?>
+				</div>
+			
+			<?php endif;
+		
+		}
+}
 
