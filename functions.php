@@ -186,3 +186,41 @@ function greyscale_author_metadata() {
 		}
 }
 
+function gs_author_content( $term ) {
+	
+	$term_id = $term->term_id;
+	$taxonomy = $term->taxonomy;
+	$description = $term->description;
+	
+	$term_link = esc_url( get_term_link($term) );
+	
+	$image = get_field( 'author_picture', $taxonomy.'_'.$term_id);
+
+	$content = '<article id="term-'.$term_id.'" class="post type-post status-publish format-standard has-post-thumbnail hentry category-books category-non-classe category-papurweb">';
+	
+	if( !empty($image) ) {
+	
+		$content .= '<div class="featured-content featured-image vertical-img">
+		
+							<a href="'. $term_link .'"><img width="140" height="199" src="'.$image['sizes']['medium'].'" class="wp-post-image" alt="'.$image['alt'].'" /></a>
+		
+							<a class="more-link" href="'. $term_link .'">Read More</a>
+					</div>';
+		
+	}
+	
+	$content .= '<header class="entry-header">
+			<h2 class="entry-title"><a href="'. $term_link .'" rel="bookmark">' . $term->name . '</a></h2>	</header><!-- .entry-header -->';
+
+	if( !empty($description) ) {
+	
+		$content .= '<div class="entry-content">'.$description.'</div><!-- .entry-content -->';
+		
+	}
+	
+	$content .= '<a class="more-link" href="'. $term_link .'">Read More</a>';
+		
+	$content .= '</article><!-- #post-## -->';
+	
+	return $content;
+}

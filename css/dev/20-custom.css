@@ -30,6 +30,17 @@ body {
 	margin: 1em 2em 1.5em 0;
 }
 
+
+/*
+Color of title text
+*/
+
+.big-text, 
+.archive .page-title.big-text, 
+body:not(.search) .woo-page .page-title {
+	color: #f7f7f7;
+}
+
 /*
 Hide external links on product lists
 */
