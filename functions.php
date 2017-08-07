@@ -223,7 +223,9 @@ function gs_author_content( $term ) {
 	$content .= '</article><!-- #post-## -->';
 	
 	return $content;
-}// WooCommerce Add MetaBox (Discussion settings for Products)
+}
+
+// WooCommerce Add MetaBox (Discussion settings for Products)
 
 add_action( 'add_meta_boxes' , 'greyscale_meta_boxes', 40 );
 
@@ -239,3 +241,32 @@ function greyscale_meta_boxes() {
     );
 }
 
+// Problem : add Products to archive pages
+
+// use is_year()
+/**
+ * add Products to archive pages
+ *
+ * @param object $query
+ * @return object
+ */
+ 
+function greyscale_yearly_archives( $query ) {
+        if ( $query->is_year() ) {
+        
+            /*$query->set( 'post_type', array('post', 'portfolio', 'product'));*/
+           	// $query->set('post_type', 'post');
+           	$query->set( 'post_type', array('post', 'portfolio', 'product'));
+            return $query;
+            
+        } else if ( $query->is_home() && $query->is_main_query() ) {
+        
+//        		echo '<pre>';
+//        		var_dump($query);
+//        		echo '</pre>';
+        	$query->set( 'post_type', array('post', 'portfolio', 'product'));
+        	return $query;
+					
+        }
+}
+add_filter( 'pre_get_posts', 'greyscale_yearly_archives' );
