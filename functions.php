@@ -196,7 +196,7 @@ function gs_author_content( $term ) {
 	
 	$image = get_field( 'author_picture', $taxonomy.'_'.$term_id);
 
-	$content = '<article id="term-'.$term_id.'" class="post type-post status-publish format-standard has-post-thumbnail hentry category-books category-non-classe category-papurweb">';
+	$content = '<article id="term-'.$term_id.'" class="post type-post status-publish format-standard has-post-thumbnail hentry">';
 	
 	if( !empty($image) ) {
 	
