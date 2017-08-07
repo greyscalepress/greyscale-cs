@@ -223,4 +223,19 @@ function gs_author_content( $term ) {
 	$content .= '</article><!-- #post-## -->';
 	
 	return $content;
+}// WooCommerce Add MetaBox (Discussion settings for Products)
+
+add_action( 'add_meta_boxes' , 'greyscale_meta_boxes', 40 );
+
+function greyscale_meta_boxes() {
+    // add_meta_box( 'commentstatusdiv',  'product', 'normal');
+    add_meta_box( 
+    	'commentstatusdiv', // Meta box ID
+    	__( 'Discussion' ), // Title
+    	'post_comment_status_meta_box' // callback Function
+    	// null, // screen
+    	// 'normal', // context within the screen
+    	// 'core' // priority
+    );
 }
+
