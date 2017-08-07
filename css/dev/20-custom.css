@@ -56,4 +56,11 @@ Fix some weirdness
 
 .woocommerce-tabs .woocommerce-Tabs-panel--description > h3 {
 	display: block;
+}/*
+Comment CSS
+*/
+
+.woocommerce #reviews #comments ol.commentlist li .comment-text .description {
+	position: relative;
 }
+
